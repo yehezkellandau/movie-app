@@ -4,3 +4,17 @@
   padding: 2rem;
   text-align: center;
 } */
+/* Enable scrolling, hide scrollbar */
+html, body {
+  overflow: scroll; /* Enable scrolling */
+}
+
+/* Hide scrollbar in WebKit-based browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar in Firefox */
+body {
+  scrollbar-width: none;
+}
