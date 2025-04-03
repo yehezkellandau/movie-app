@@ -1,21 +1,29 @@
-import { Link, useParams } from "react-router";
+import { useNavigate } from "react-router";
 type MovieCardDetailsProps = {
-  id?:number;
+  id?: number;
   title: string;
   posterUrl: string;
   overview: string;
-  genre:string;
+  genre: string;
 };
 
-const MovieCardDetails = ({ id, title, posterUrl, overview, genre }: MovieCardDetailsProps) => {
-  const { id: currentId } = useParams(); 
-  const isOnDetailsPage = currentId === String(id);
-  const CardContent = (
+const MovieCardDetails = ({ title, posterUrl, overview, genre }: MovieCardDetailsProps) => {
+  const navigate = useNavigate();
+  return (
+    <>
+      <div>
+        <button
+          onClick={() => navigate(-1)}
+          className="ml-5 py-2 px-4 hover:bg-gray-600 hover:text-white transition hover:cursor-pointer"
+        >
+          Back
+        </button>
+      </div>
       <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-6">
         <div className="max-w-3xl w-full bg-gray-800 p-6 rounded-2xl shadow-xl flex flex-col lg:flex-row">
-          <img 
-            src={`https://image.tmdb.org/t/p/w500${posterUrl}`} 
-            alt={title} 
+          <img
+            src={`https://image.tmdb.org/t/p/w500${posterUrl}`}
+            alt={title}
             className="w-full lg:w-1/3 h-80 object-cover rounded-lg shadow-md"
           />
           <div className="lg:ml-6 mt-4 lg:mt-0 flex flex-col justify-center">
@@ -25,9 +33,10 @@ const MovieCardDetails = ({ id, title, posterUrl, overview, genre }: MovieCardDe
           </div>
         </div>
       </div>
+    </>
   );
 
-  return isOnDetailsPage ? CardContent : <Link className="m-4" to={`/details/${id}`}>{CardContent}</Link>;
+  // return isOnDetailsPage ? CardContent : <Link className="m-4" to={`/details/${id}`}>{CardContent}</Link>;
 };
 
 

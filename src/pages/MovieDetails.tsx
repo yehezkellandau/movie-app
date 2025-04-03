@@ -15,7 +15,7 @@ const MovieDetails = () => {
         if(error || !data){
             return <p>error...</p>
         }
-        return <MovieCardDetails id={data.id} title={data.title} posterUrl={data.poster_path} overview={data.overview} genre={data.genres.map((genre) => genre.name).join(", ")}/>
+        return <MovieCardDetails title={data.title} posterUrl={data.poster_path} overview={data.overview} genre={data.genres.map((genre) => genre.name).join(", ")}/>
           
     },[isLoading,error,data]) 
 
