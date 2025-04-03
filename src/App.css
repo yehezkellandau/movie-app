@@ -18,3 +18,24 @@ html, body {
 body {
   scrollbar-width: none;
 }
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+.search-container {
+  display: flex;
+  justify-content: flex-end; /* Aligner à droite */
+  padding: 10px 20px;
+}
+
+.search-bar {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 500px;
+}
+a.active {
+  color: rgb(130, 126, 126);
+}

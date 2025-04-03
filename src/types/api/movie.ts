@@ -1,5 +1,5 @@
 export type TypeMovie = {
-    id: number;
+    id?: number;
     title: string;
     poster_path: string;
 }

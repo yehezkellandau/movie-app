@@ -6,7 +6,7 @@ type MovieListProps = {
   movieData: TypeMovie[];
 };
 
-const MovieCarousel = ({ title, movieData }: MovieListProps) => {
+const MovieCarousel = ({title, movieData }: MovieListProps) => {
   return (
     <div className="p-4">
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
@@ -15,9 +15,10 @@ const MovieCarousel = ({ title, movieData }: MovieListProps) => {
         <div className="flex space-x-4">
           {movieData.map((movie) => (
             <MovieCard
+              id={movie.id}
               key={movie.id}
               title={movie.title}
-              posterUrl={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              posterUrl={movie.poster_path}
             />
           ))}
         </div>
