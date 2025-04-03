@@ -1,15 +1,14 @@
 import MovieCard from "@/components/ui/MovieCard";
 import SearchBar from "@/components/ui/searchBar";
 import useSearchMovie from "@/hooks/api/useSearchMovie";
-// import { useQueryClient } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams } from "react-router";
 const SearchResults = () => {
     const {title} = useParams();
-    const {isLoading, error, data}  = useSearchMovie(title ||  "");
-    const [searchValue, setSearchValue] = useState<string>("");
-    // const queryClient = useQueryClient();
-    const navigate = useNavigate();
+    const [value, setValue] = useState<string>(title || "")
+    const [searchValue, setSearchValue] = useState<string>(title || "");
+    const {isLoading, error, data}  = useSearchMovie(searchValue);
+
 
     const renderContent = useMemo(() => {
         if(isLoading){
@@ -23,25 +22,15 @@ const SearchResults = () => {
         ))
     },[isLoading,error,data]) 
 
-    // const handleSearch = () => {
-    //     queryClient.invalidateQueries({queryKey:["movies","search", {searchValue}]});
-    // }
     const handleSearch = () => {
-        if (searchValue) {
-            navigate(`/search/${searchValue}`); 
-        }
-    };
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            handleSearch();
-        }
-    };
+        setSearchValue(value);
+    }
     
     return (
         <div>
-            <SearchBar defaultValue={title} onSearch={handleSearch} onKeyDown={handleKeyDown} onChange={(e) => setSearchValue(e.target.value)}/>
+            <SearchBar defaultValue={title} onSearch={handleSearch} onChange={(e)=> setValue(e.target.value)}/>
             <div>
-                <p className="text-sm ml-5">Showing results for: <span className="text-lg">{title}</span></p>
+                <p className="text-sm ml-5">Showing results for: <span className="text-lg">{value}</span></p>
             </div>
             <div className="grid-container">
             {renderContent}

@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router";
+import { Link, useParams } from "react-router";
 type MovieCardProps = {
   id?:number;
   title: string;
@@ -18,9 +18,10 @@ const MovieCard = ({ id, title, posterUrl }: MovieCardProps) => {
         <h3 className="text-white text-lg font-bold">{title}</h3>
       </div>
     </div>
+    
   );
 
-  return isOnDetailsPage ? CardContent : <NavLink className="m-4" to={`/details/${id}`}>{CardContent}</NavLink>;
+  return isOnDetailsPage ? CardContent : <Link className="m-4" to={`/details/${id}`}>{CardContent}</Link>;
 };
 
 
