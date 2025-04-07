@@ -2,9 +2,9 @@ import MovieCardDetails from "@/components/ui/MovieCardDetails";
 import useGetMovieDetails from "@/hooks/api/useGetMovieDetails";
 import { useMemo } from "react";
 import { useParams } from "react-router";
+
 const MovieDetails = () => {
     const { id } = useParams();
-
     const movieId = id ? parseInt(id, 10) : -1;
     const { isLoading, error, data } = useGetMovieDetails(movieId);
 

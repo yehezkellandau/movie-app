@@ -1,7 +1,8 @@
+
 const useFetch = () => {
     const fetchResource = async <T>(url: string,config?:RequestInit):Promise<T> => {
         try{
-            const response = await fetch("https://api.themoviedb.org/3/" + url, {...config, headers:{...config?.headers, Authorization:"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZTAxZTBlZTRmNzFkN2ViNzJiZjk2ZTQ0MWE0NDViMyIsIm5iZiI6MTc0MzQzOTg1NS4xODQsInN1YiI6IjY3ZWFjN2VmYjVlMDI1OGZjZDBlYzg5YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.0Jw7GIGQ2MH-8TllstdlwR0ffaGqj9W04GmjDTbbIBI"}});
+            const response = await fetch(import.meta.env.VITE_URL_API + url, {...config, headers:{...config?.headers, accept:"application/json", "Content-Type": "application/json", Authorization:"Bearer " + import.meta.env.VITE_TOKEN_API}});
             if(!response.ok){
                 throw new Error("Error");
             }else{

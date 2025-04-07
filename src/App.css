@@ -36,6 +36,9 @@ body {
   border-radius: 5px;
   width: 500px;
 }
+p a {
+  color: rgb(106, 106, 106);
+}
 a.active {
   color: rgb(130, 126, 126);
 }
